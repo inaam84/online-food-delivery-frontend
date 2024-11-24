@@ -10,22 +10,24 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent {
   loginForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
     if(this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      this.authService.login(username, password).subscribe({
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe({
         next: (response) => {
+          this.errorMessage = '';
           console.log('Login Successful', response);
         },
         error: (error) => {

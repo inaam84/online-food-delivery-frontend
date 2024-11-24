@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  apiUrl = 'https://dummyjson.com/auth/login';
+  // apiUrl = 'https://dummyjson.com/auth/login';
+  apiUrl = 'http://onlinefooddeliverybackend.test/api/login';
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
-    const payload = {username, password};
+  login(email: string, password: string): Observable<any> {
+    const payload = {email, password};
 
     return this.http.post(this.apiUrl, payload);
   }
