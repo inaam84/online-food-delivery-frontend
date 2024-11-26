@@ -1,24 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-form',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './login-form.component.html',
+  styleUrl: './login-form.component.scss'
 })
-
-export class LoginComponent {
+export class LoginFormComponent {
   loginForm: FormGroup;
-  errorMessage = '';
+  errorMessage: string = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -37,5 +36,5 @@ export class LoginComponent {
       });
     }
   }
-  
+
 }
