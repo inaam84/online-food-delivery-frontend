@@ -1,8 +1,0 @@
-<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="email">Email</label>
-    <input id="email" name="email" formControlName="email" type="email" />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" formControlName="password" >
-    <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
-    <button type="submit" class="btn btn-signin" [disabled]="loginForm.invalid">Sign In</button>
-</form>
